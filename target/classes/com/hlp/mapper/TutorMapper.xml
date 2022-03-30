@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tutorMapper">
+
+    <!--  登录  -->
+    <select id="login" parameterType="tutor" resultType="tutor">
+        select * from t_tutor where id=#{id} and password=#{password}
+    </select>
+
+    <!--  修改密码  -->
+    <select id="changePassword" parameterType="tutor">
+        update t_tutor set password=#{password} where id=#{id}
+    </select>
+
+    <!--  查询我发布的课题  -->
+    <select id="queryMyPublishProject" parameterType="long" resultType="project">
+        select * from t_project where tutorId=#{tutorId}
+    </select>
+
+    <!--  修改我发布的课题信息  -->
+    <select id="changeProjectInfo" parameterType="project">
+        update t_project set name=#{name},source=#{source},nature=#{nature},demand=#{demand},content=#{content} where id=#{id}
+    </select>
+
+    <!--  发布新课题  -->
+    <insert id="publishNewProject" parameterType="project">
+        insert into t_project  values (null,#{name},#{content},null,#{tutorId},#{nature},#{source},#{demand})
+    </insert>
+
+    <!--  删除课题  -->
+    <delete id="deleteProject" parameterType="int">
+        delete from t_project where id=#{id}
+    </delete>
+
+    <!--  查询课题名称是否唯一  -->
+    <select id="queryIsUniqueProjectName" parameterType="string" resultType="project">
+        select * from t_project where name=#{name}
+    </select>
+
+</mapper>

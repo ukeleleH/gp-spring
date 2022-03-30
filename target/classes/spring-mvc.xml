@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc   http://www.springframework.org/schema/mvc/spring-mvc.xsd
+">
+
+    <!--  1. 配置 controller 的组件扫描  -->
+    <context:component-scan base-package="com.hlp.controller"/>
+
+    <!--  2. 配置内部视图解析器(帮助处理前后缀）  -->
+    <!--  ......  -->
+
+    <!--  3. 配置处理器适配器中的【消息转换器】（帮助自动将对象转换为 JSON 格式） -->
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+            </list>
+        </property>
+    </bean>
+
+    <!--  ★★★★★  -->
+    <!--  3. 配置 mvc 的注解驱动（可以不用手动配置处理器映射器和处理器适配器，并且底层已经实现 json 格式的转换）  -->
+    <!--    <mvc:annotation-driven/>-->
+
+    <!--  ★★★★★  -->
+    <!--  4. 开放资源的访问  -->
+    <!--  方式 1  -->
+    <!--  <mvc:resources mapping="/js/**" location="/js/"/>  -->
+    <!--  方式 2  -->
+    <!--  <mvc:default-servlet-handler/>  -->
+
+    <!--  5. 配置文件上传解析器  -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="UTF-8"/>
+        <property name="maxUploadSize" value="3145728"/>
+    </bean>
+
+
+    <!--  6. 配置简单映射【 异常处理器 】(内置的） -->
+    <!--<bean id="simpleMappingExceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="defaultErrorView" value="error.jsp"/>
+        <property name="exceptionMappings">
+            <map>
+                <entry key="java.lang.ArithmeticException" value="error.jsp"/>
+            </map>
+        </property>
+    </bean>-->
+
+</beans>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="studentMapper">
+
+    <!--  登录  -->
+    <select id="login" parameterType="student" resultType="student">
+        select * from t_student where id=#{id} and password=#{password}
+    </select>
+
+    <!--  修改密码  -->
+    <update id="changePassword" parameterType="student">
+        update t_student set password=#{password} where id=#{id}
+    </update>
+
+    <!--  查询学生选择的毕业设计题目  -->
+    <select id="querySProject" parameterType="long" resultType="string">
+        select name from t_project where studentId=#{studentId}
+    </select>
+
+    <!--  查询全系所有毕业设计选题信息  -->
+    <select id="queryAllProject" resultType="project">
+        select * from t_project
+    </select>
+
+    <!--  查询所有课题对应的导师的名字  -->
+    <select id="queryAllProjectOfTutor" resultType="string">
+        select t.name from t_project p,t_tutor t where p.tutorId=t.id
+    </select>
+
+    <!--  查询我选择的课题信息  -->
+    <select id="queryMyProject" parameterType="long" resultType="project">
+        select * from t_project where studentId=#{studentId}
+    </select>
+
+    <!--  查询我的课题导师信息  -->
+    <select id="queryMyProjectTutor" parameterType="long" resultType="tutor">
+        select * from t_tutor where id=#{id}
+    </select>
+
+    <!--  获取公告  -->
+    <select id="getLeftNotice" resultType="notice">
+        select * from t_notice
+    </select>
+
+    <!--  选择课题  -->
+    <update id="chooseProject" parameterType="project">
+        update t_project set studentId=#{studentId} where id=#{id}
+    </update>
+
+</mapper>
