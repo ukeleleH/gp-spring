@@ -31,6 +31,7 @@
     <mappers>
         <mapper resource="com/hlp/mapper/StudentMapper.xml"></mapper>
         <mapper resource="com/hlp/mapper/TutorMapper.xml"></mapper>
+        <mapper resource="com/hlp/mapper/AdminMapper.xml"></mapper>
     </mappers>
 
 </configuration>
