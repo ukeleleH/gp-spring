@@ -2,6 +2,23 @@ package com.hlp.pojo;
 
 public class Tutor {
     private long id;
+
+    @Override
+    public String toString() {
+        return "Tutor{" +
+                "id=" + id +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", gender=" + gender +
+                ", tel='" + tel + '\'' +
+                ", qq='" + qq + '\'' +
+                ", title='" + title + '\'' +
+                ", degree='" + degree + '\'' +
+                ", isInsideSchool=" + isInsideSchool +
+                ", introduction='" + introduction + '\'' +
+                '}';
+    }
+
     private String password;
     private String name;
     private char gender;

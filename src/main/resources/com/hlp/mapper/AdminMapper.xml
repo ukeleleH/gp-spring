@@ -12,4 +12,48 @@
         select * from t_student
     </select>
 
+    <!--  查询所有导师  -->
+    <select id="selectAllTutor" resultType="tutor">
+        select * from t_tutor
+    </select>
+
+    <!--  查询学生学号是否唯一  -->
+    <select id="isUniqueStudentId" resultType="student" parameterType="long">
+        select * from t_student where id=#{id}
+    </select>
+
+    <!--  删除学生信息  -->
+    <delete id="deleteStudent" parameterType="long">
+        delete from t_student where id=#{id}
+    </delete>
+
+    <!--  新增学生信息  -->
+    <insert id="addStudent" parameterType="student">
+        insert into t_student values (#{id},#{password},#{name},#{tel},#{gender},#{major},#{class_grade})
+    </insert>
+
+    <!--  修改学生信息  -->
+    <update id="updateStudent" parameterType="student">
+        update t_student set name=#{name},gender=#{gender},tel=#{tel},password=#{password},major=#{major},class_grade=#{class_grade} where id=#{id}
+    </update>
+
+    <!--  查询导师学号是否唯一  -->
+    <select id="isUniqueTutorId" resultType="tutor" parameterType="long">
+        select * from t_tutor where id=#{id}
+    </select>
+
+    <!--  删除导师信息  -->
+    <delete id="deleteTutor" parameterType="long">
+        delete from t_tutor where id=#{id}
+    </delete>
+
+    <!--  新增导师信息  -->
+    <insert id="addTutor" parameterType="tutor">
+        insert into t_tutor values (#{id},#{password},#{name},#{tel},#{gender},#{qq},#{title},#{degree},#{isInsideSchool},#{introduction})
+    </insert>
+
+    <!--  修改导师信息  -->
+    <update id="updateTutor" parameterType="tutor">
+        update t_tutor set name=#{name},gender=#{gender},tel=#{tel},password=#{password},qq=#{qq},title=#{title},degree=#{degree},isInsideSchool=#{isInsideSchool},introduction=#{introduction} where id=#{id}
+    </update>
 </mapper>
