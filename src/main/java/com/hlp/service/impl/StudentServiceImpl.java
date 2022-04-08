@@ -33,6 +33,21 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    public int getOpportunity(long id) {
+        return studentDao.getOpportunity(id);
+    }
+
+    @Override
+    public int updateOpportunity(long id) {
+        return studentDao.updateOpportunity(id);
+    }
+
+    @Override
+    public int updateHasChooseProject(long id) {
+        return studentDao.updateHasChooseProject(id);
+    }
+
+    @Override
     public List<Project> queryAllProject(){
         return studentDao.queryAllProject();
     }
@@ -61,4 +76,5 @@ public class StudentServiceImpl implements StudentService {
     public int chooseProject(Project project) {
         return studentDao.chooseProject(project);
     }
+
 }

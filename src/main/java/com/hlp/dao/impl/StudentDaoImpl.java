@@ -36,6 +36,27 @@ public class StudentDaoImpl implements StudentDao {
     }
 
     @Override
+    // 查询学生可重选课题的机会次数
+    public int getOpportunity(long id) {
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        return sqlSession.selectOne("studentMapper.getOpportunity",id);
+    }
+
+    @Override
+    // 更新学生可重选课题的机会次数
+    public int updateOpportunity(long id) {
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        return sqlSession.update("studentMapper.updateOpportunity",id);
+    }
+
+    @Override
+    // 更新学生已选择的课题信息
+    public int updateHasChooseProject(long id) {
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        return sqlSession.update("studentMapper.updateHasChooseProject",id);
+    }
+
+    @Override
     // 查询全系所有毕业设计选题信息
     public List<Project> queryAllProject() {
         SqlSession sqlSession = MyBatisUtils.getSqlSession();

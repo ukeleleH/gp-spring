@@ -16,6 +16,12 @@ public interface StudentService {
 
     String querySProject(long id);
 
+    int getOpportunity(long id);
+
+    int updateOpportunity(long id);
+
+    int updateHasChooseProject(long id);
+
     List<Project> queryAllProject();
 
     List<String> queryAllProjectOfTutor();

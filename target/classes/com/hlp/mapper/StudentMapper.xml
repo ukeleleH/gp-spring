@@ -17,6 +17,21 @@
         select name from t_project where studentId=#{studentId}
     </select>
 
+    <!--  查询学生可重选课题的机会次数  -->
+    <select id="getOpportunity" parameterType="long" resultType="int">
+        select opportunity from t_student where id=#{id}
+    </select>
+
+    <!--  更新学生可重选课题的机会次数  -->
+    <update id="updateOpportunity" parameterType="long">
+        update t_student set opportunity=0 where id=#{id}
+    </update>
+
+    <!--  更新学生已选择的课题信息  -->
+    <update id="updateHasChooseProject" parameterType="long">
+        update t_project set studentId=null where studentId=#{id}
+    </update>
+
     <!--  查询全系所有毕业设计选题信息  -->
     <select id="queryAllProject" resultType="project">
         select * from t_project

@@ -45,6 +45,27 @@ public class StudentController {
         return studentService.querySProject(id);
     }
 
+    // 查询学生可重选课题的机会次数
+    @RequestMapping("/getOpportunity")
+    @ResponseBody
+    public int getOpportunity(long id) {
+        return studentService.getOpportunity(id);
+    }
+
+    // 更新学生可重选课题的机会次数
+    @RequestMapping("/updateOpportunity")
+    @ResponseBody
+    public int updateOpportunity(long id) {
+        return studentService.updateOpportunity(id);
+    }
+
+    // 更新学生已选择的课题信息
+    @RequestMapping("/updateHasChooseProject")
+    @ResponseBody
+    public int updateHasChooseProject(long id) {
+        return studentService.updateHasChooseProject(id);
+    }
+
     // 查询全系所有毕业设计选题信息
     @RequestMapping("/allProject")
     @ResponseBody

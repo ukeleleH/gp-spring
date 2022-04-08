@@ -8,6 +8,7 @@ public class Student {
     private char gender;
     private String major;
     private String class_grade;
+    private  int opportunity;
 
     public long getId() { return id; }
 
@@ -59,16 +60,12 @@ public class Student {
         this.class_grade = class_grade;
     }
 
-    @Override
-    public String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
-                ", tel='" + tel + '\'' +
-                ", gender=" + gender +
-                ", major='" + major + '\'' +
-                ", class_grade='" + class_grade + '\'' +
-                '}';
+    public int getOpportunity() {
+        return opportunity;
     }
+
+    public void setOpportunity(int opportunity) {
+        this.opportunity = opportunity;
+    }
+
 }

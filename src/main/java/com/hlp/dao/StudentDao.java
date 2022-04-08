@@ -17,6 +17,15 @@ public interface StudentDao {
     // 查询学生选择的毕业设计题目
     String querySProject(long id);
 
+    // 查询学生可重选课题的机会次数
+    int getOpportunity(long id);
+
+    // 更新学生可重选课题的机会次数
+    int updateOpportunity(long id);
+
+    // 更新学生已选择的课题信息
+    int updateHasChooseProject(long id);
+
     // 查询全系所有毕业设计选题信息
     List<Project> queryAllProject();
 
@@ -34,4 +43,5 @@ public interface StudentDao {
 
     // 选择课题的方法
     int chooseProject(Project project);
+
 }

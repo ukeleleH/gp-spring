@@ -29,7 +29,7 @@
 
     <!--  新增学生信息  -->
     <insert id="addStudent" parameterType="student">
-        insert into t_student values (#{id},#{password},#{name},#{tel},#{gender},#{major},#{class_grade})
+        insert into t_student values (#{id},#{password},#{name},#{tel},#{gender},#{major},#{class_grade},1)
     </insert>
 
     <!--  修改学生信息  -->
