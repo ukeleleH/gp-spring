@@ -29,7 +29,7 @@
 
     <!--  新增学生信息  -->
     <insert id="addStudent" parameterType="student">
-        insert into t_student values (null,#{sno},#{password},#{name},#{tel},#{gender},#{major},#{class_grade},1)
+        insert into t_student values (null,#{sno},#{password},#{name},#{gender},#{tel},#{major},#{class_grade},1)
     </insert>
 
     <!--  修改学生信息  -->
@@ -49,7 +49,7 @@
 
     <!--  新增导师信息  -->
     <insert id="addTutor" parameterType="tutor">
-        insert into t_tutor values (null,#{tno},#{password},#{name},#{tel},#{gender},#{qq},#{title},#{degree},#{isInsideSchool},#{introduction})
+        insert into t_tutor values (null,#{tno},#{password},#{name},#{gender},#{tel},#{qq},#{title},#{degree},#{isInsideSchool},#{introduction})
     </insert>
 
     <!--  修改导师信息  -->
