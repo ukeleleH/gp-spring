@@ -1,16 +1,19 @@
 package com.hlp.service;
 
+import com.hlp.pojo.LoginForm;
 import com.hlp.pojo.Project;
 import com.hlp.pojo.Tutor;
 
 import java.util.List;
 
 public interface TutorService {
-    Tutor login(Tutor tutor);
+    Tutor login(LoginForm loginForm);
 
-    int changePassword(Tutor tutor);
+    int changeProfile(Tutor tutor);
 
-    List<Project> queryMyPublishProject(long id);
+    int changePassword(LoginForm loginForm);
+
+    List<Project> queryMyPublishProject(long tutorId);
 
     int changeProjectInfo(Project project);
 
@@ -19,5 +22,4 @@ public interface TutorService {
     Project queryIsUniqueProjectName(String name);
 
     int deleteProject(int id);
-
 }

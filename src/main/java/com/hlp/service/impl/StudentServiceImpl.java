@@ -1,10 +1,7 @@
 package com.hlp.service.impl;
 
 import com.hlp.dao.StudentDao;
-import com.hlp.pojo.Notice;
-import com.hlp.pojo.Project;
-import com.hlp.pojo.Student;
-import com.hlp.pojo.Tutor;
+import com.hlp.pojo.*;
 import com.hlp.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,33 +15,38 @@ public class StudentServiceImpl implements StudentService {
     private StudentDao studentDao;
 
     @Override
-    public Student login(Student student){
-        return studentDao.login(student);
+    public Student login(LoginForm loginForm) {
+        return studentDao.login(loginForm);
     }
 
     @Override
-    public int changePassword(Student student){
-        return studentDao.changePassword(student);
+    public int changeProfile(Student student) {
+        return studentDao.changeProfile(student);
     }
 
     @Override
-    public String querySProject(long id){
-        return studentDao.querySProject(id);
+    public int changePassword(LoginForm loginForm){
+        return studentDao.changePassword(loginForm);
     }
 
     @Override
-    public int getOpportunity(long id) {
-        return studentDao.getOpportunity(id);
+    public String querySProject(long studentId){
+        return studentDao.querySProject(studentId);
     }
 
     @Override
-    public int updateOpportunity(long id) {
-        return studentDao.updateOpportunity(id);
+    public int getOpportunity(long sno) {
+        return studentDao.getOpportunity(sno);
     }
 
     @Override
-    public int updateHasChooseProject(long id) {
-        return studentDao.updateHasChooseProject(id);
+    public int updateOpportunity(long sno) {
+        return studentDao.updateOpportunity(sno);
+    }
+
+    @Override
+    public int updateHasChooseProject(long studentId) {
+        return studentDao.updateHasChooseProject(studentId);
     }
 
     @Override
@@ -58,13 +60,18 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Project queryMyProject(long id){
-        return studentDao.queryMyProject(id);
+    public Project queryMyProject(long studentId){
+        return studentDao.queryMyProject(studentId);
     }
 
     @Override
-    public Tutor queryMyProjectTutor(long tutorId){
-        return studentDao.queryMyProjectTutor(tutorId);
+    public Tutor queryMyProjectTutor(long tno){
+        return studentDao.queryMyProjectTutor(tno);
+    }
+
+    @Override
+    public Student queryStudentData(long sno) {
+        return studentDao.queryStudentData(sno);
     }
 
     @Override

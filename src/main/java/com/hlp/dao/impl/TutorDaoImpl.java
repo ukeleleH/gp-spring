@@ -1,6 +1,7 @@
 package com.hlp.dao.impl;
 
 import com.hlp.dao.TutorDao;
+import com.hlp.pojo.LoginForm;
 import com.hlp.pojo.Project;
 import com.hlp.pojo.Tutor;
 import com.hlp.util.MyBatisUtils;
@@ -12,24 +13,28 @@ import java.util.List;
 @Repository
 public class TutorDaoImpl implements TutorDao {
 
-    // 通过自己封装的工具类获得 SqlSession 对象
-
     @Override
-    public Tutor login(Tutor tutor) {
+    public Tutor login(LoginForm loginForm) {
         SqlSession sqlSession = MyBatisUtils.getSqlSession();
-        return sqlSession.selectOne("tutorMapper.login", tutor);
+        return sqlSession.selectOne("tutorMapper.login", loginForm);
     }
 
     @Override
-    public int changePassword(Tutor tutor) {
+    public int changeProfile(Tutor tutor) {
         SqlSession sqlSession = MyBatisUtils.getSqlSession();
-        return sqlSession.update("tutorMapper.changePassword", tutor);
+        return sqlSession.update("tutorMapper.changeProfile",tutor);
     }
 
     @Override
-    public List<Project> queryMyPublishProject(long id) {
+    public int changePassword(LoginForm loginForm) {
         SqlSession sqlSession = MyBatisUtils.getSqlSession();
-        return sqlSession.selectList("tutorMapper.queryMyPublishProject", id);
+        return sqlSession.update("tutorMapper.changePassword", loginForm);
+    }
+
+    @Override
+    public List<Project> queryMyPublishProject(long tutorId) {
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        return sqlSession.selectList("tutorMapper.queryMyPublishProject", tutorId);
     }
 
     @Override

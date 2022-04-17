@@ -3,13 +3,18 @@
 <mapper namespace="tutorMapper">
 
     <!--  登录  -->
-    <select id="login" parameterType="tutor" resultType="tutor">
-        select * from t_tutor where id=#{id} and password=#{password}
+    <select id="login" parameterType="loginForm" resultType="tutor">
+        select * from t_tutor where tno=#{account} and password=#{password}
     </select>
 
+    <!--  修改个人基本信息  -->
+    <update id="changeProfile" parameterType="tutor">
+        update t_tutor set name=#{name},gender=#{gender},tel=#{tel},qq=#{qq},introduction=#{introduction} where tno=#{tno}
+    </update>
+
     <!--  修改密码  -->
-    <select id="changePassword" parameterType="tutor">
-        update t_tutor set password=#{password} where id=#{id}
+    <select id="changePassword" parameterType="loginForm">
+        update t_tutor set password=#{password} where tno=#{account}
     </select>
 
     <!--  查询我发布的课题  -->
@@ -27,14 +32,14 @@
         insert into t_project  values (null,#{name},#{content},null,#{tutorId},#{nature},#{source},#{demand})
     </insert>
 
-    <!--  删除课题  -->
-    <delete id="deleteProject" parameterType="int">
-        delete from t_project where id=#{id}
-    </delete>
-
     <!--  查询课题名称是否唯一  -->
     <select id="queryIsUniqueProjectName" parameterType="string" resultType="project">
         select * from t_project where name=#{name}
     </select>
+
+    <!--  删除课题  -->
+    <delete id="deleteProject" parameterType="int">
+        delete from t_project where id=#{id}
+    </delete>
 
 </mapper>

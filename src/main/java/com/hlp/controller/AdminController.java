@@ -1,6 +1,7 @@
 package com.hlp.controller;
 
 import com.hlp.pojo.Admin;
+import com.hlp.pojo.LoginForm;
 import com.hlp.pojo.Student;
 import com.hlp.pojo.Tutor;
 import com.hlp.service.AdminService;
@@ -23,8 +24,8 @@ public class AdminController {
     // 登录
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
-    public Admin login(@RequestBody Admin admin) {
-        return adminService.login(admin);
+    public Admin login(@RequestBody LoginForm loginForm) {
+        return adminService.login(loginForm);
     }
 
     // 查询所有学生
@@ -44,14 +45,14 @@ public class AdminController {
     //  新增学生信息时查询学号是否唯一
     @RequestMapping("/isUniqueStudentId")
     @ResponseBody
-    public Student selectIsUniqueStudentId(long id) {
-        return adminService.selectIsUniqueStudentId(id);
+    public Student selectIsUniqueStudentId(long sno) {
+        return adminService.selectIsUniqueStudentId(sno);
     }
 
     //  删除学生信息
     @RequestMapping("/deleteStudent")
     @ResponseBody
-    public int deleteStudent(long id) {
+    public int deleteStudent(int id) {
         return adminService.deleteStudent(id);
     }
 
@@ -69,17 +70,17 @@ public class AdminController {
         return adminService.changeStudent(student);
     }
 
-    //  新增导师信息时查询学号是否唯一
+    //  新增导师信息时查询工号是否唯一
     @RequestMapping("/isUniqueTutorId")
     @ResponseBody
-    public Tutor selectIsUniqueTutorId(long id) {
-        return adminService.selectIsUniqueTutorId(id);
+    public Tutor selectIsUniqueTutorId(long tno) {
+        return adminService.selectIsUniqueTutorId(tno);
     }
 
     //  删除导师信息
     @RequestMapping("/deleteTutor")
     @ResponseBody
-    public int deleteTutor(long id) {
+    public int deleteTutor(int id) {
         return adminService.deleteTutor(id);
     }
 

@@ -1,5 +1,6 @@
 package com.hlp.dao;
 
+import com.hlp.pojo.LoginForm;
 import com.hlp.pojo.Project;
 import com.hlp.pojo.Tutor;
 
@@ -7,13 +8,16 @@ import java.util.List;
 
 public interface TutorDao {
     // 导师登录的方法
-    Tutor login(Tutor tutor);
+    Tutor login(LoginForm loginForm);
+
+    // 修改个人基本信息
+    int changeProfile(Tutor tutor);
 
     // 修改密码
-    int changePassword(Tutor tutor);
+    int changePassword(LoginForm loginForm);
 
     // 查询我发布的课题
-    List<Project> queryMyPublishProject(long id);
+    List<Project> queryMyPublishProject(long tutorId);
 
     // 修改课题信息
     int changeProjectInfo(Project project);

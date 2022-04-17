@@ -1,5 +1,6 @@
 package com.hlp.controller;
 
+import com.hlp.pojo.LoginForm;
 import com.hlp.pojo.Project;
 import com.hlp.pojo.Tutor;
 import com.hlp.service.TutorService;
@@ -22,22 +23,29 @@ public class TutorController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
     // 登录
-    public Tutor login(@RequestBody Tutor tutor) {
-        return tutorService.login(tutor);
+    public Tutor login(@RequestBody LoginForm loginForm) {
+        return tutorService.login(loginForm);
+    }
+
+    // 修改个人基本信息
+    @RequestMapping(value = "/changeProfile",method = RequestMethod.POST)
+    @ResponseBody
+    public int changeProfile(@RequestBody Tutor tutor) {
+        return tutorService.changeProfile(tutor);
     }
 
     // 修改密码
     @RequestMapping("/changePassword")
     @ResponseBody
-    public int changePassword(Tutor tutor) {
-        return tutorService.changePassword(tutor);
+    public int changePassword(LoginForm loginForm) {
+        return tutorService.changePassword(loginForm);
     }
 
     // 查询我发布的课题
     @RequestMapping("/myPublishProject")
     @ResponseBody
-    public List<Project> queryMyPublishProject(long id) {
-        return tutorService.queryMyPublishProject(id);
+    public List<Project> queryMyPublishProject(long tutorId) {
+        return tutorService.queryMyPublishProject(tutorId);
     }
 
     // 修改课题信息

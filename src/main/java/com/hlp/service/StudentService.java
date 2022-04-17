@@ -1,34 +1,33 @@
 package com.hlp.service;
 
-import com.hlp.pojo.Notice;
-import com.hlp.pojo.Project;
-import com.hlp.pojo.Student;
-import com.hlp.pojo.Tutor;
+import com.hlp.pojo.*;
 
-import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 
 public interface StudentService {
-    Student login(Student student);
+    Student login(LoginForm loginForm);
 
-    int changePassword(Student student);
+    int changeProfile(Student student);
 
-    String querySProject(long id);
+    int changePassword(LoginForm loginForm);
 
-    int getOpportunity(long id);
+    String querySProject(long studentId);
 
-    int updateOpportunity(long id);
+    int getOpportunity(long sno);
 
-    int updateHasChooseProject(long id);
+    int updateOpportunity(long sno);
+
+    int updateHasChooseProject(long studentId);
 
     List<Project> queryAllProject();
 
     List<String> queryAllProjectOfTutor();
 
-    Project queryMyProject(long id);
+    Project queryMyProject(long studentId);
 
-    Tutor queryMyProjectTutor(long tutorId);
+    Tutor queryMyProjectTutor(long tno);
+
+    Student queryStudentData(long sno);
 
     List<Notice> getLeftNotice();
 

@@ -1,6 +1,7 @@
 package com.hlp.service.impl;
 
 import com.hlp.dao.TutorDao;
+import com.hlp.pojo.LoginForm;
 import com.hlp.pojo.Project;
 import com.hlp.pojo.Tutor;
 import com.hlp.service.TutorService;
@@ -16,19 +17,25 @@ public class TutorServiceImpl implements TutorService {
     private TutorDao tutorDao;
 
     @Override
-    public Tutor login(Tutor tutor) {
-        return tutorDao.login(tutor);
+    public Tutor login(LoginForm loginForm) {
+        return tutorDao.login(loginForm);
     }
 
     @Override
-    public int changePassword(Tutor tutor) {
-        return tutorDao.changePassword(tutor);
+    // 修改个人基本信息
+    public int changeProfile(Tutor tutor) {
+        return tutorDao.changeProfile(tutor);
+    }
+
+    @Override
+    public int changePassword(LoginForm loginForm) {
+        return tutorDao.changePassword(loginForm);
     }
 
     @Override
     // 查询我发布的课题
-    public List<Project> queryMyPublishProject(long id) {
-        return tutorDao.queryMyPublishProject(id);
+    public List<Project> queryMyPublishProject(long tutorId) {
+        return tutorDao.queryMyPublishProject(tutorId);
     }
 
     @Override

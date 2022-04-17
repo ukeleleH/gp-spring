@@ -1,10 +1,7 @@
 package com.hlp.dao.impl;
 
 import com.hlp.dao.StudentDao;
-import com.hlp.pojo.Notice;
-import com.hlp.pojo.Project;
-import com.hlp.pojo.Student;
-import com.hlp.pojo.Tutor;
+import com.hlp.pojo.*;
 import com.hlp.util.MyBatisUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
@@ -16,44 +13,51 @@ public class StudentDaoImpl implements StudentDao {
 
     @Override
     // 登录
-    public Student login(Student student) {
+    public Student login(LoginForm loginForm) {
         SqlSession sqlSession = MyBatisUtils.getSqlSession();
-        return sqlSession.selectOne("studentMapper.login", student);
+        return sqlSession.selectOne("studentMapper.login", loginForm);
+    }
+
+    @Override
+    // 修改个人基本信息的方法
+    public int changeProfile(Student student) {
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        return sqlSession.update("studentMapper.changeProfile",student);
     }
 
     @Override
     // 修改密码
-    public int changePassword(Student student) {
+    public int changePassword(LoginForm loginForm) {
         SqlSession sqlSession = MyBatisUtils.getSqlSession();
-        return sqlSession.update("studentMapper.changePassword", student);
+        return sqlSession.update("studentMapper.changePassword", loginForm);
     }
 
     @Override
     // 查询学生选择的毕业设计题目
-    public String querySProject(long id) {
+    public String querySProject(long studentId) {
         SqlSession sqlSession = MyBatisUtils.getSqlSession();
-        return sqlSession.selectOne("studentMapper.querySProject", id);
+        return sqlSession.selectOne("studentMapper.querySProject", studentId);
     }
 
     @Override
     // 查询学生可重选课题的机会次数
-    public int getOpportunity(long id) {
+    public int getOpportunity(long sno) {
         SqlSession sqlSession = MyBatisUtils.getSqlSession();
-        return sqlSession.selectOne("studentMapper.getOpportunity",id);
+        return sqlSession.selectOne("studentMapper.getOpportunity",sno);
     }
 
     @Override
     // 更新学生可重选课题的机会次数
-    public int updateOpportunity(long id) {
+    public int updateOpportunity(long sno) {
         SqlSession sqlSession = MyBatisUtils.getSqlSession();
-        return sqlSession.update("studentMapper.updateOpportunity",id);
+        return sqlSession.update("studentMapper.updateOpportunity",sno);
     }
 
     @Override
     // 更新学生已选择的课题信息
-    public int updateHasChooseProject(long id) {
+    public int updateHasChooseProject(long studentId) {
         SqlSession sqlSession = MyBatisUtils.getSqlSession();
-        return sqlSession.update("studentMapper.updateHasChooseProject",id);
+        return sqlSession.update("studentMapper.updateHasChooseProject",studentId);
     }
 
     @Override
@@ -72,16 +76,23 @@ public class StudentDaoImpl implements StudentDao {
 
     @Override
     // 查询我选择的课题信息
-    public Project queryMyProject(long id) {
+    public Project queryMyProject(long studentId) {
         SqlSession sqlSession = MyBatisUtils.getSqlSession();
-        return sqlSession.selectOne("studentMapper.queryMyProject", id);
+        return sqlSession.selectOne("studentMapper.queryMyProject", studentId);
     }
 
     @Override
     // 查询我的课题导师信息
-    public Tutor queryMyProjectTutor(long tutorId) {
+    public Tutor queryMyProjectTutor(long tno) {
         SqlSession sqlSession = MyBatisUtils.getSqlSession();
-        return sqlSession.selectOne("studentMapper.queryMyProjectTutor", tutorId);
+        return sqlSession.selectOne("studentMapper.queryMyProjectTutor", tno);
+    }
+
+    @Override
+    // 查询课题详情里的学生信息
+    public Student queryStudentData(long sno) {
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        return sqlSession.selectOne("studentMapper.queryStudentData", sno);
     }
 
     @Override

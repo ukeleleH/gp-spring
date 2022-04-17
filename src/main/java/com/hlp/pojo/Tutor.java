@@ -1,24 +1,8 @@
 package com.hlp.pojo;
 
 public class Tutor {
-    private long id;
-
-    @Override
-    public String toString() {
-        return "Tutor{" +
-                "id=" + id +
-                ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
-                ", gender=" + gender +
-                ", tel='" + tel + '\'' +
-                ", qq='" + qq + '\'' +
-                ", title='" + title + '\'' +
-                ", degree='" + degree + '\'' +
-                ", isInsideSchool=" + isInsideSchool +
-                ", introduction='" + introduction + '\'' +
-                '}';
-    }
-
+    private int id;
+    private long tno;
     private String password;
     private String name;
     private char gender;
@@ -29,10 +13,20 @@ public class Tutor {
     private short isInsideSchool;
     private String introduction;
 
-    public long getId() { return id; }
+    public int getId() {
+        return id;
+    }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
+    }
+
+    public long getTno() {
+        return tno;
+    }
+
+    public void setTno(long tno) {
+        this.tno = tno;
     }
 
     public String getPassword() {

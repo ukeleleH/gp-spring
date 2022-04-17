@@ -12,6 +12,7 @@
         <typeAlias type="com.hlp.pojo.Project" alias="project"></typeAlias>
         <typeAlias type="com.hlp.pojo.Notice" alias="notice"></typeAlias>
         <typeAlias type="com.hlp.pojo.Admin" alias="admin"></typeAlias>
+        <typeAlias type="com.hlp.pojo.LoginForm" alias="loginForm"></typeAlias>
     </typeAliases>
 
     <!--  数据源环境  -->

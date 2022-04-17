@@ -1,30 +1,30 @@
 package com.hlp.dao;
 
-import com.hlp.pojo.Notice;
-import com.hlp.pojo.Project;
-import com.hlp.pojo.Student;
-import com.hlp.pojo.Tutor;
+import com.hlp.pojo.*;
 
 import java.util.List;
 
 public interface StudentDao {
     //  登录的方法，查找账号是否存在
-    Student login(Student student);
+    Student login(LoginForm loginForm);
+
+    // 修改个人基本信息的方法
+    int changeProfile(Student student);
 
     // 修改密码的方法
-    int changePassword(Student student);
+    int changePassword(LoginForm loginForm);
 
     // 查询学生选择的毕业设计题目
-    String querySProject(long id);
+    String querySProject(long studentId);
 
     // 查询学生可重选课题的机会次数
-    int getOpportunity(long id);
+    int getOpportunity(long sno);
 
     // 更新学生可重选课题的机会次数
-    int updateOpportunity(long id);
+    int updateOpportunity(long sno);
 
     // 更新学生已选择的课题信息
-    int updateHasChooseProject(long id);
+    int updateHasChooseProject(long studentId);
 
     // 查询全系所有毕业设计选题信息
     List<Project> queryAllProject();
@@ -33,10 +33,13 @@ public interface StudentDao {
     List<String> queryAllProjectOfTutor();
 
     // 查询我选择的课题信息
-    Project queryMyProject(long id);
+    Project queryMyProject(long studentId);
 
     // 查询我的课题导师信息
-    Tutor queryMyProjectTutor(long tutorId);
+    Tutor queryMyProjectTutor(long tno);
+
+    // 查询课题详情里的学生信息
+    Student queryStudentData(long sno);
 
     // 获取左侧公告的方法
     List<Notice> getLeftNotice();

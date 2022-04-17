@@ -2,6 +2,7 @@ package com.hlp.service.impl;
 
 import com.hlp.dao.AdminDao;
 import com.hlp.pojo.Admin;
+import com.hlp.pojo.LoginForm;
 import com.hlp.pojo.Student;
 import com.hlp.pojo.Tutor;
 import com.hlp.service.AdminService;
@@ -17,8 +18,8 @@ public class AdminServiceImpl implements AdminService {
     private AdminDao adminDao;
 
     @Override
-    public Admin login(Admin admin) {
-        return adminDao.login(admin);
+    public Admin login(LoginForm loginForm) {
+        return adminDao.login(loginForm);
     }
 
     @Override
@@ -32,12 +33,12 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public Student selectIsUniqueStudentId(long id) {
-        return adminDao.selectIsUniqueStudentId(id);
+    public Student selectIsUniqueStudentId(long sno) {
+        return adminDao.selectIsUniqueStudentId(sno);
     }
 
     @Override
-    public int deleteStudent(long id) {
+    public int deleteStudent(int id) {
         return adminDao.deleteStudent(id);
     }
 
@@ -52,12 +53,12 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public Tutor selectIsUniqueTutorId(long id) {
-        return adminDao.selectIsUniqueTutorId(id);
+    public Tutor selectIsUniqueTutorId(long tno) {
+        return adminDao.selectIsUniqueTutorId(tno);
     }
 
     @Override
-    public int deleteTutor(long id) {
+    public int deleteTutor(int id) {
         return adminDao.deleteTutor(id);
     }
 

@@ -1,19 +1,30 @@
 package com.hlp.pojo;
 
 public class Student {
-    private long id;
+    private int id;
+    private long sno;
     private String password;
     private String name;
-    private String tel;
     private char gender;
+    private String tel;
     private String major;
     private String class_grade;
     private  int opportunity;
 
-    public long getId() { return id; }
+    public int getId() {
+        return id;
+    }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
+    }
+
+    public long getSno() {
+        return sno;
+    }
+
+    public void setSno(long sno) {
+        this.sno = sno;
     }
 
     public String getPassword() {
@@ -32,10 +43,6 @@ public class Student {
         this.name = name;
     }
 
-    public String getTel() { return tel; }
-
-    public void setTel(String tel) { this.tel = tel; }
-
     public char getGender() {
         return gender;
     }
@@ -43,6 +50,10 @@ public class Student {
     public void setGender(char gender) {
         this.gender = gender;
     }
+
+    public String getTel() { return tel; }
+
+    public void setTel(String tel) { this.tel = tel; }
 
     public String getMajor() {
         return major;

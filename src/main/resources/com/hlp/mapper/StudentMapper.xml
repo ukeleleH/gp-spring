@@ -3,13 +3,18 @@
 <mapper namespace="studentMapper">
 
     <!--  登录  -->
-    <select id="login" parameterType="student" resultType="student">
-        select * from t_student where id=#{id} and password=#{password}
+    <select id="login" parameterType="loginForm" resultType="student">
+        select * from t_student where sno=#{account} and password=#{password}
     </select>
 
+    <!--  修改个人基本信息  -->
+    <update id="changeProfile" parameterType="student">
+        update t_student set name=#{name},gender=#{gender},tel=#{tel},major=#{major},class_grade=#{class_grade} where sno=#{sno}
+    </update>
+
     <!--  修改密码  -->
-    <update id="changePassword" parameterType="student">
-        update t_student set password=#{password} where id=#{id}
+    <update id="changePassword" parameterType="loginForm">
+        update t_student set password=#{password} where sno=#{account}
     </update>
 
     <!--  查询学生选择的毕业设计题目  -->
@@ -19,17 +24,17 @@
 
     <!--  查询学生可重选课题的机会次数  -->
     <select id="getOpportunity" parameterType="long" resultType="int">
-        select opportunity from t_student where id=#{id}
+        select opportunity from t_student where sno=#{sno}
     </select>
 
     <!--  更新学生可重选课题的机会次数  -->
     <update id="updateOpportunity" parameterType="long">
-        update t_student set opportunity=0 where id=#{id}
+        update t_student set opportunity=0 where sno=#{sno}
     </update>
 
     <!--  更新学生已选择的课题信息  -->
     <update id="updateHasChooseProject" parameterType="long">
-        update t_project set studentId=null where studentId=#{id}
+        update t_project set studentId=null where studentId=#{studentId}
     </update>
 
     <!--  查询全系所有毕业设计选题信息  -->
@@ -39,7 +44,7 @@
 
     <!--  查询所有课题对应的导师的名字  -->
     <select id="queryAllProjectOfTutor" resultType="string">
-        select t.name from t_project p,t_tutor t where p.tutorId=t.id
+        select t.name from t_project p,t_tutor t where p.tutorId=t.tno
     </select>
 
     <!--  查询我选择的课题信息  -->
@@ -49,7 +54,12 @@
 
     <!--  查询我的课题导师信息  -->
     <select id="queryMyProjectTutor" parameterType="long" resultType="tutor">
-        select * from t_tutor where id=#{id}
+        select * from t_tutor where tno=#{tno}
+    </select>
+
+    <!--  查询课题详情里的学生信息  -->
+    <select id="queryStudentData" parameterType="long" resultType="student">
+        select * from t_student where sno=#{sno}
     </select>
 
     <!--  获取公告  -->
