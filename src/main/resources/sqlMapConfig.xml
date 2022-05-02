@@ -13,6 +13,9 @@
         <typeAlias type="com.hlp.pojo.Notice" alias="notice"></typeAlias>
         <typeAlias type="com.hlp.pojo.Admin" alias="admin"></typeAlias>
         <typeAlias type="com.hlp.pojo.LoginForm" alias="loginForm"></typeAlias>
+        <typeAlias type="com.hlp.pojo.Department" alias="department"></typeAlias>
+        <typeAlias type="com.hlp.pojo.Major" alias="major"></typeAlias>
+        <typeAlias type="com.hlp.pojo.Clazz" alias="clazz"></typeAlias>
     </typeAliases>
 
     <!--  数据源环境  -->
@@ -33,6 +36,7 @@
         <mapper resource="com/hlp/mapper/StudentMapper.xml"></mapper>
         <mapper resource="com/hlp/mapper/TutorMapper.xml"></mapper>
         <mapper resource="com/hlp/mapper/AdminMapper.xml"></mapper>
+        <mapper resource="com/hlp/mapper/SystemMapper.xml"></mapper>
     </mappers>
 
 </configuration>

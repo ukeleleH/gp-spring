@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="systemMapper">
+
+    <!--  查询学科部  -->
+    <select id="selectDepartment" resultType="department">
+        select * from t_department
+    </select>
+
+    <!--  查询专业  -->
+    <select id="selectMajor" resultType="major">
+        select * from t_major
+    </select>
+
+    <!--  查询班级  -->
+    <select id="selectClass" parameterType="int" resultType="clazz">
+        select * from t_class limit 0,#{limitNum}
+    </select>
+
+</mapper>
