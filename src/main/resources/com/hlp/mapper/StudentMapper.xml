@@ -72,4 +72,28 @@
         update t_project set studentId=#{studentId} where id=#{id}
     </update>
 
+    <!--  查询我的开题报告  -->
+    <select id="getMyOpeningReport" parameterType="long" resultType="openingReport">
+        select * from t_openingreport where sno=#{sno}
+    </select>
+
+    <!--  上传开题报告  -->
+    <insert id="uploadOpeningReport" parameterType="openingReport">
+        insert into t_openingreport(sno,tno,fileName,fileUrl,uploadTime) values (#{sno},#{tno},#{fileName},#{fileUrl},#{uploadTime})
+    </insert>
+
+    <!--  下载开题报告  -->
+    <select id="downloadOpeningReport" parameterType="int" resultType="string">
+        select fileUrl from t_openingreport where id=#{id}
+    </select>
+
+    <!--  删除开题报告  -->
+    <delete id="deleteOpeningReport" parameterType="int">
+        delete from t_openingreport where id=#{id}
+    </delete>
+
+    <!--  查询我的导师的学号  -->
+    <select id="searchTutorTno" parameterType="long" resultType="long">
+        select tutorId from t_project where studentId=#{sno}
+    </select>
 </mapper>

@@ -32,7 +32,7 @@ public class StudentController {
     }
 
     // 修改个人基本信息
-    @RequestMapping(value = "/changeProfile",method = RequestMethod.POST)
+    @RequestMapping(value = "/changeProfile", method = RequestMethod.POST)
     @ResponseBody
     public int changeProfile(@RequestBody Student student) {
         return studentService.changeProfile(student);
@@ -122,23 +122,40 @@ public class StudentController {
         return studentService.chooseProject(project);
     }
 
-    // 文件上传的方法
-    @RequestMapping("/upload")
+    // 获取我上传的开题报告
+    @RequestMapping("/getMyOpeningReport")
     @ResponseBody
-    public void upload(MultipartFile file) throws IOException {
-        // 获得上传文件的名称
-        String originalFilename = file.getOriginalFilename();
-        System.out.println(originalFilename);
-        // 存储文件
-        file.transferTo(new File("D:/upload/", originalFilename));
+    public List<OpeningReport> getMyOpeningReport(long sno) {
+        return studentService.getMyOpeningReport(sno);
     }
 
-    // 文件下载的方法
-    @RequestMapping(value = "/download", method = RequestMethod.GET)
+    // 上传开题报告
+    @RequestMapping("/uploadOpeningReport")
     @ResponseBody
-    public void download(HttpServletResponse response, HttpServletRequest request) throws IOException {
-//        String realPath = URLDecoder.decode(ResourceUtils.getURL("").getPath(), "UTF-8");
-        File file = new File("D:\\upload\\简历 - 副本.docx");
-        ResponseUtils.download(request,response,file);
+    public int uploadOpeningReport(MultipartFile file, long sno,long tno) {
+        return studentService.uploadOpeningReport(file, sno,tno);
     }
+
+    // 下载开题报告
+    @RequestMapping(value = "/downloadOpeningReport", method = RequestMethod.GET)
+    @ResponseBody
+    public void downloadOpeningReport(HttpServletRequest request, HttpServletResponse response, int id) throws IOException {
+        // String realPath = URLDecoder.decode(ResourceUtils.getURL("").getPath(), "UTF-8");
+        studentService.downloadOpeningReport(request, response, id);
+    }
+
+    // 删除开题报告
+    @RequestMapping("/deleteOpeningReport")
+    @ResponseBody
+    public int deleteOpeningReport(int id){
+        return studentService.deleteOpeningReport(id);
+    }
+
+    // 查询我的导师学号
+    @RequestMapping("/selectTutorTno")
+    @ResponseBody
+    public long searchTutorTno(long sno) {
+        return studentService.searchTutorTno(sno);
+    }
+
 }

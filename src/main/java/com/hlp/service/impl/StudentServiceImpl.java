@@ -3,9 +3,16 @@ package com.hlp.service.impl;
 import com.hlp.dao.StudentDao;
 import com.hlp.pojo.*;
 import com.hlp.service.StudentService;
+import com.hlp.util.ResponseUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 @Service("studentService")
@@ -25,12 +32,12 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public int changePassword(LoginForm loginForm){
+    public int changePassword(LoginForm loginForm) {
         return studentDao.changePassword(loginForm);
     }
 
     @Override
-    public String querySProject(long studentId){
+    public String querySProject(long studentId) {
         return studentDao.querySProject(studentId);
     }
 
@@ -50,22 +57,22 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public List<Project> queryAllProject(){
+    public List<Project> queryAllProject() {
         return studentDao.queryAllProject();
     }
 
     @Override
-    public List<String> queryAllProjectOfTutor(){
+    public List<String> queryAllProjectOfTutor() {
         return studentDao.queryAllProjectOfTutor();
     }
 
     @Override
-    public Project queryMyProject(long studentId){
+    public Project queryMyProject(long studentId) {
         return studentDao.queryMyProject(studentId);
     }
 
     @Override
-    public Tutor queryMyProjectTutor(long tno){
+    public Tutor queryMyProjectTutor(long tno) {
         return studentDao.queryMyProjectTutor(tno);
     }
 
@@ -75,13 +82,58 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public List<Notice> getLeftNotice(){
+    public List<Notice> getLeftNotice() {
         return studentDao.getLeftNotice();
     }
 
     @Override
     public int chooseProject(Project project) {
         return studentDao.chooseProject(project);
+    }
+
+    @Override
+    public List<OpeningReport> getMyOpeningReport(long sno) {
+        return studentDao.getMyOpeningReport(sno);
+    }
+
+    @Override
+    public int uploadOpeningReport(MultipartFile file, long sno,long tno) {
+        String filename = file.getOriginalFilename();
+        String fileUrl = "D:\\upload\\" + filename;
+        Date date = new Date();
+
+        // 封装成对象
+        OpeningReport openingReport = new OpeningReport();
+        openingReport.setSno(sno);
+        openingReport.setTno(tno);
+        openingReport.setFileName(filename);
+        openingReport.setFileUrl(fileUrl);
+        openingReport.setUploadTime(date);
+
+        // 存储文件
+        try {
+            file.transferTo(new File("D:/upload/", filename));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return studentDao.uploadOpeningReport(openingReport);
+    }
+
+    @Override
+    public void downloadOpeningReport(HttpServletRequest request, HttpServletResponse response, int id) {
+        String fileUrl = studentDao.downloadOpeningReport(id);
+        File file = new File(fileUrl);
+        ResponseUtils.download(request, response, file);
+    }
+
+    @Override
+    public int deleteOpeningReport(int id) {
+        return studentDao.deleteOpeningReport(id);
+    }
+
+    @Override
+    public long searchTutorTno(long sno) {
+        return studentDao.searchTutorTno(sno);
     }
 
 }

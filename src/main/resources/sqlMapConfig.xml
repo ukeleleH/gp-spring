@@ -16,6 +16,7 @@
         <typeAlias type="com.hlp.pojo.Department" alias="department"></typeAlias>
         <typeAlias type="com.hlp.pojo.Major" alias="major"></typeAlias>
         <typeAlias type="com.hlp.pojo.Clazz" alias="clazz"></typeAlias>
+        <typeAlias type="com.hlp.pojo.OpeningReport" alias="openingReport"></typeAlias>
     </typeAliases>
 
     <!--  数据源环境  -->

@@ -47,4 +47,18 @@ public interface StudentDao {
     // 选择课题的方法
     int chooseProject(Project project);
 
+    // 查询我的开题报告
+    List<OpeningReport> getMyOpeningReport(long sno);
+
+    // 上传开题报告
+    int uploadOpeningReport(OpeningReport openingReport);
+
+    // 下载开题报告
+    String downloadOpeningReport(int id);
+
+    // 删除开题报告
+    int deleteOpeningReport(int id);
+
+    // 查询我的导师的学号
+    long searchTutorTno(long sno);
 }

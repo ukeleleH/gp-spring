@@ -108,4 +108,38 @@ public class StudentDaoImpl implements StudentDao {
         SqlSession sqlSession = MyBatisUtils.getSqlSession();
         return sqlSession.insert("studentMapper.chooseProject",project);
     }
+
+    @Override
+    // 获取我上传的开题报告
+    public List<OpeningReport> getMyOpeningReport(long sno) {
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        return sqlSession.selectList("studentMapper.getMyOpeningReport",sno);
+    }
+
+    @Override
+    // 上传开题报告
+    public int uploadOpeningReport(OpeningReport openingReport) {
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        return sqlSession.insert("studentMapper.uploadOpeningReport",openingReport);
+    }
+
+    @Override
+    // 下载开题报告
+    public String downloadOpeningReport(int id) {
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        return sqlSession.selectOne("studentMapper.downloadOpeningReport",id);
+    }
+
+    @Override
+    public int deleteOpeningReport(int id) {
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        return sqlSession.delete("studentMapper.deleteOpeningReport",id);
+    }
+
+    @Override
+    // 查询导师的工号
+    public long searchTutorTno(long sno) {
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        return sqlSession.selectOne("studentMapper.searchTutorTno",sno);
+    }
 }
