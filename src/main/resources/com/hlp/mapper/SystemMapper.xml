@@ -7,9 +7,14 @@
         select * from t_department
     </select>
 
-    <!--  查询专业  -->
+    <!--  查询所有专业  -->
     <select id="selectMajor" resultType="major">
         select * from t_major
+    </select>
+
+    <!--  按学科部查询专业  -->
+    <select id="searchMajorByDid" resultType="major" parameterType="int">
+        select * from t_major where d_id=#{d_id}
     </select>
 
     <!--  查询班级  -->

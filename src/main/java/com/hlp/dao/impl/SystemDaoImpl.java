@@ -26,6 +26,12 @@ public class SystemDaoImpl implements SystemDao {
     }
 
     @Override
+    public List<Major> searchMajorByDid(int d_id) {
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        return sqlSession.selectList("systemMapper.searchMajorByDid",d_id);
+    }
+
+    @Override
     public List<Clazz> searchClass(int limitNum) {
         SqlSession sqlSession = MyBatisUtils.getSqlSession();
         return sqlSession.selectList("systemMapper.selectClass",limitNum);

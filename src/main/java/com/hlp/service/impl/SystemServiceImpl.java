@@ -27,6 +27,11 @@ public class SystemServiceImpl implements SystemService {
     }
 
     @Override
+    public List<Major> searchMajorByDid(int d_id) {
+        return systemDao.searchMajorByDid(d_id);
+    }
+
+    @Override
     public List<Clazz> searchClass(int limitNum) {
         return systemDao.searchClass(limitNum);
     }

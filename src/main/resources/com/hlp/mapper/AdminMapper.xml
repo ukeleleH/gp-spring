@@ -56,4 +56,35 @@
     <update id="updateTutor" parameterType="tutor">
         update t_tutor set tno=#{tno},name=#{name},gender=#{gender},tel=#{tel},password=#{password},qq=#{qq},title=#{title},degree=#{degree},isInsideSchool=#{isInsideSchool},introduction=#{introduction} where id=#{id}
     </update>
+
+    <!--  新增公告  -->
+    <insert id="addNotice" parameterType="notice">
+        insert into t_notice values (#{id},#{title},#{content},#{url})
+    </insert>
+
+    <!--  修改公告  -->
+    <update id="updateNotice" parameterType="notice">
+        update t_notice set title=#{title},content=#{content},url=#{url} where id=#{id};
+    </update>
+
+    <!--  删除公告  -->
+    <delete id="deleteNotice" parameterType="int">
+        delete from t_notice where id=#{id}
+    </delete>
+
+    <!--  新增专业  -->
+    <insert id="addMajor" parameterType="major">
+        insert into t_major values (#{id},#{name},#{d_id},#{type})
+    </insert>
+
+    <!--  修改专业  -->
+    <update id="updateMajor" parameterType="major">
+        update t_major set name=#{name},d_id=#{d_id},type=#{type} where id=#{id};
+    </update>
+
+    <!--  删除专业  -->
+    <delete id="deleteMajor" parameterType="int">
+        delete from t_major where id=#{id}
+    </delete>
+
 </mapper>

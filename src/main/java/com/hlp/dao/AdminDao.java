@@ -1,9 +1,6 @@
 package com.hlp.dao;
 
-import com.hlp.pojo.Admin;
-import com.hlp.pojo.LoginForm;
-import com.hlp.pojo.Student;
-import com.hlp.pojo.Tutor;
+import com.hlp.pojo.*;
 
 import java.util.List;
 
@@ -40,4 +37,22 @@ public interface AdminDao {
 
     // 修改导师信息
     int changeTutor(Tutor tutor);
+
+    //  新增公告
+    int addNotice(Notice notice);
+
+    //  修改公告
+    int updateNotice(Notice notice);
+
+    //  删除公告
+    int deleteNotice(int id);
+
+    //  新增专业
+    int addMajor(Major major);
+
+    //  修改专业
+    int updateMajor(Major major);
+
+    //  删除专业
+    int deleteMajor(int id);
 }

@@ -1,10 +1,7 @@
 package com.hlp.dao.impl;
 
 import com.hlp.dao.AdminDao;
-import com.hlp.pojo.Admin;
-import com.hlp.pojo.LoginForm;
-import com.hlp.pojo.Student;
-import com.hlp.pojo.Tutor;
+import com.hlp.pojo.*;
 import com.hlp.util.MyBatisUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
@@ -78,5 +75,41 @@ public class AdminDaoImpl implements AdminDao {
     public int changeTutor(Tutor tutor) {
         SqlSession sqlSession = MyBatisUtils.getSqlSession();
         return sqlSession.update("adminMapper.updateTutor",tutor);
+    }
+
+    @Override
+    public int addNotice(Notice notice) {
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        return sqlSession.insert("adminMapper.addNotice",notice);
+    }
+
+    @Override
+    public int updateNotice(Notice notice) {
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        return sqlSession.update("adminMapper.updateNotice",notice);
+    }
+
+    @Override
+    public int deleteNotice(int id) {
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        return sqlSession.delete("adminMapper.deleteNotice",id);
+    }
+
+    @Override
+    public int addMajor(Major major) {
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        return sqlSession.insert("adminMapper.addMajor",major);
+    }
+
+    @Override
+    public int updateMajor(Major major) {
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        return sqlSession.update("adminMapper.updateMajor",major);
+    }
+
+    @Override
+    public int deleteMajor(int id) {
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        return sqlSession.delete("adminMapper.deleteMajor",id);
     }
 }

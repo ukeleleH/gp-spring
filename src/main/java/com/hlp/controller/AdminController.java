@@ -1,9 +1,6 @@
 package com.hlp.controller;
 
-import com.hlp.pojo.Admin;
-import com.hlp.pojo.LoginForm;
-import com.hlp.pojo.Student;
-import com.hlp.pojo.Tutor;
+import com.hlp.pojo.*;
 import com.hlp.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -96,5 +93,47 @@ public class AdminController {
     @ResponseBody
     public int changeTutor(@RequestBody Tutor tutor) {
         return adminService.changeTutor(tutor);
+    }
+
+    //  新增公告
+    @RequestMapping("/addNotice")
+    @ResponseBody
+    public int addNotice(@RequestBody Notice notice) {
+        return adminService.addNotice(notice);
+    }
+
+    //  修改公告
+    @RequestMapping("/changeNotice")
+    @ResponseBody
+    public int updateNotice(@RequestBody Notice notice) {
+        return adminService.updateNotice(notice);
+    }
+
+    //  删除公告
+    @RequestMapping("/deleteNotice")
+    @ResponseBody
+    public int deleteNotice(int id) {
+        return adminService.deleteNotice(id);
+    }
+
+    //  新增专业
+    @RequestMapping("/addMajor")
+    @ResponseBody
+    public int addMajor(@RequestBody Major major) {
+        return adminService.addMajor(major);
+    }
+
+    //  修改专业
+    @RequestMapping("/changeMajor")
+    @ResponseBody
+    public int updateMajor(@RequestBody Major major) {
+        return adminService.updateMajor(major);
+    }
+
+    //  删除专业
+    @RequestMapping("/deleteMajor")
+    @ResponseBody
+    public int deleteMajor(int id) {
+        return adminService.deleteMajor(id);
     }
 }

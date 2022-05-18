@@ -25,11 +25,18 @@ public class SystemController {
         return systemService.searchDepartment();
     }
 
-    // 查询专业信息
+    // 查询所有专业信息
     @RequestMapping("/searchMajor")
     @ResponseBody
     public List<Major> searchMajor() {
         return systemService.searchMajor();
+    }
+
+    // 按学科部查询专业信息
+    @RequestMapping("/searchMajorByDid")
+    @ResponseBody
+    public List<Major> searchMajorByDid(int d_id) {
+        return systemService.searchMajorByDid(d_id);
     }
 
     // 查询班级信息

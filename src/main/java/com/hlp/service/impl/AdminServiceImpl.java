@@ -1,10 +1,7 @@
 package com.hlp.service.impl;
 
 import com.hlp.dao.AdminDao;
-import com.hlp.pojo.Admin;
-import com.hlp.pojo.LoginForm;
-import com.hlp.pojo.Student;
-import com.hlp.pojo.Tutor;
+import com.hlp.pojo.*;
 import com.hlp.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -70,6 +67,36 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public int changeTutor(Tutor tutor) {
         return adminDao.changeTutor(tutor);
+    }
+
+    @Override
+    public int addNotice(Notice notice) {
+        return adminDao.addNotice(notice);
+    }
+
+    @Override
+    public int updateNotice(Notice notice) {
+        return adminDao.updateNotice(notice);
+    }
+
+    @Override
+    public int deleteNotice(int id) {
+        return adminDao.deleteNotice(id);
+    }
+
+    @Override
+    public int addMajor(Major major) {
+        return adminDao.addMajor(major);
+    }
+
+    @Override
+    public int updateMajor(Major major) {
+        return adminDao.updateMajor(major);
+    }
+
+    @Override
+    public int deleteMajor(int id) {
+        return adminDao.deleteMajor(id);
     }
 
 }
