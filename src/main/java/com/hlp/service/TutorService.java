@@ -1,9 +1,11 @@
 package com.hlp.service;
 
 import com.hlp.pojo.LoginForm;
+import com.hlp.pojo.OpeningReport;
 import com.hlp.pojo.Project;
 import com.hlp.pojo.Tutor;
 
+import java.util.HashMap;
 import java.util.List;
 
 public interface TutorService {
@@ -22,4 +24,12 @@ public interface TutorService {
     Project queryIsUniqueProjectName(String name);
 
     int deleteProject(int id);
+
+    List<HashMap> searchStudentSnoName(long tno);
+
+    List<OpeningReport> searchAllReport(long tno);
+
+    List<OpeningReport> getReportBySno(long sno);
+
+    int updateOpeningReport(HashMap map);
 }

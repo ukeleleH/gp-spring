@@ -1,9 +1,11 @@
 package com.hlp.dao;
 
 import com.hlp.pojo.LoginForm;
+import com.hlp.pojo.OpeningReport;
 import com.hlp.pojo.Project;
 import com.hlp.pojo.Tutor;
 
+import java.util.HashMap;
 import java.util.List;
 
 public interface TutorDao {
@@ -30,5 +32,17 @@ public interface TutorDao {
 
     // 删除课题
     int deleteProject(int id);
+
+    // 查询选择我的课题的所有学生的学号和姓名
+    List<HashMap> searchStudentSnoName(long tno);
+
+    // 获取我的学生上传的所有开题报告
+    List<OpeningReport> searchAllReport(long tno);
+
+    // 根据学号查询某个学生的开题报告
+    List<OpeningReport> getReportBySno(long sno);
+
+    // 点评开题报告(即更新)
+    int updateOpeningReport(HashMap map);
 
 }

@@ -42,4 +42,24 @@
         delete from t_project where id=#{id}
     </delete>
 
+    <!--  查询选择我的课题的所有学生的学号和姓名  -->
+    <select id="searchStudentSnoName" parameterType="long" resultType="map">
+        select s.sno,s.name from t_student s,t_project p where s.sno=p.studentId and p.tutorId=#{tno}
+    </select>
+
+    <!--  获取我的学生上传的所有开题报告  -->
+    <select id="searchAllReport" parameterType="long" resultType="openingReport">
+        select * from t_openingreport where tno=#{tno}
+    </select>
+
+    <!--  根据学号查询某个学生的开题报告  -->
+    <select id="getReportBySno" parameterType="long" resultType="openingReport">
+        select * from t_openingreport where sno=#{sno}
+    </select>
+
+    <!--  点评开题报告(即更新)  -->
+    <update id="updateOpeningReport" parameterType="map">
+        update t_openingreport set status=#{state},comment=#{remark} where id=#{id}
+    </update>
+
 </mapper>

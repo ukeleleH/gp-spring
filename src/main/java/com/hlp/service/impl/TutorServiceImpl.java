@@ -2,12 +2,14 @@ package com.hlp.service.impl;
 
 import com.hlp.dao.TutorDao;
 import com.hlp.pojo.LoginForm;
+import com.hlp.pojo.OpeningReport;
 import com.hlp.pojo.Project;
 import com.hlp.pojo.Tutor;
 import com.hlp.service.TutorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -60,6 +62,30 @@ public class TutorServiceImpl implements TutorService {
     // 删除课题
     public int deleteProject(int id) {
         return tutorDao.deleteProject(id);
+    }
+
+    @Override
+    // 查询选择我的课题的所有学生的学号和姓名
+    public List<HashMap> searchStudentSnoName(long tno) {
+        return tutorDao.searchStudentSnoName(tno);
+    }
+
+    @Override
+    // 获取我的学生上传的所有开题报告
+    public List<OpeningReport> searchAllReport(long tno) {
+        return tutorDao.searchAllReport(tno);
+    }
+
+    @Override
+    // 根据学号查询某个学生的开题报告
+    public List<OpeningReport> getReportBySno(long sno) {
+        return tutorDao.getReportBySno(sno);
+    }
+
+    @Override
+    // 点评开题报告(即更新)
+    public int updateOpeningReport(HashMap map) {
+        return tutorDao.updateOpeningReport(map);
     }
 
 }
